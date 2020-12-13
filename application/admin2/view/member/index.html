@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link href="/static/layui/css/layui.css" rel="stylesheet" 
+	type="text/css" />
+  <script type="text/javascript" src="/static/layui/layui.js"></script>
+  <style>
+      .layui-form input{
+          height: 28px;padding-left: 5px;border: 1px solid #a3a3a3;font-size: 12px;
+      }
+      
+  </style>
+</head>
+<body>  
+<div style="margin-bottom: 5px;">
+    <div style="height: 30px; line-height: 30px;">
+		<span class="layui-breadcrumb">
+		    <a>会员列表</a> <a><cite>会员列表</cite></a>
+		</span>
+	</div>
+    <div class="layui-form" >
+        <div style="text-align:right;">
+            <div style="flex-grow:1;"></div>
+            <input placeholder="输入ID 或账号　" name="member"/>
+            <button type="submit"  class="layui-btn layui-btn-sm" lay-submit="" lay-filter="search-btn">搜索</button>
+        </div>
+    </div>          
+
+<table class="layui-table" lay-data="{page:true,size:'sm', id:'demo' ,method:'post',limit:15,url:document.URL}" lay-filter="demo">
+  <thead>
+    <tr>
+      <th lay-data="{type:'checkbox', fixed: 'left'}"></th>
+      <th lay-data="{field:'id', width:80, sort: true, fixed: true}">ID</th>
+      <th lay-data="{field:'username', width:100}">用户名</th>
+      <th lay-data="{field:'nickname', width:100}">昵称</th>
+      <th lay-data="{field:'word', width:200}">助记词</th>
+      <th lay-data="{field:'cny', width:100}">CNY</th>
+      <th lay-data="{field:'freeze_cny', width:100}">冻结CNY</th>
+      <th lay-data="{field:'ag', width:100}">AG</th>
+      <th lay-data="{field:'freeze_ag', width:100}">冻结AG</th>
+      <th lay-data="{field:'lock_ag', width:100}">锁仓AG</th>
+      <th lay-data="{field:'flow_ag', width:100}">流通AG</th>
+      <th lay-data="{field:'sc', width:100}">SC</th>
+      <th lay-data="{field:'qc', width:100}">QC</th>
+      <th lay-data="{field:'usdt', width:100}">USDT</th>
+      <th lay-data="{field:'freeze_usdt', width:100}">冻结USDT</th>
+      <th lay-data="{field:'invite_code', width:100}">邀请码</th>
+      <th lay-data="{field:'father_id', width:100}">推荐人ID</th>
+      <th lay-data="{field:'level', width:100}">等级ID</th>
+      <th lay-data="{field:'ctime', width:150}">注册时间</th>
+       <th lay-data="{fixed: 'right', width:120, align:'center', toolbar: '#barDemo2'}">重置交易密码</th>
+      <th lay-data="{fixed: 'right', width:120, align:'center', toolbar: '#barDemo'}">操作</th>
+    </tr>
+  </thead>
+</table>
+ <script type="text/html" id="barDemo2">
+  <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="resetPayPwd">重置</a>
+</script>
+<script type="text/html" id="barDemo">
+  <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+</script>
+
+<script>
+layui.use(['table','jquery','form','element','layer'], function(){
+  var table = layui.table;
+  var form=layui.form;
+  var layer=layui.layer;
+  var $=layui.jquery;
+  var eve={
+      resetPayPwd:function(d){
+          layer.confirm('该操作会清空用户【'+d.nickname+'】的交易密码，请确定继续？',function(){
+              $.post('{:url('resetPayPwd')}',{id:d.id},function(json){
+                  layer.msg(json.msg);
+              });
+          });
+      },
+      del:function(){
+          
+      },
+      edit:function(){
+          
+      }
+      
+  };
+  table.on('tool(demo)', function(obj){
+    if(eve[obj.event]){
+        eve[obj.event].call(obj,obj.data);
+    }
+  });
+   //var checkStatus = table.checkStatus('idTest');
+   //var data = checkStatus.data;
+   //checkStatus.isAll ? '全选': '未全选'
+ 
+  form.on('submit(search-btn)', function(data){
+      
+    table.reload('demo', {
+        where: data.field
+    });
+    return false;
+  });
+  
+  
+  
+  
+});
+</script>
+
+</body>
+</html>

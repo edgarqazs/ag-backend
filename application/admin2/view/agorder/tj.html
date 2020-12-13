@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link href="/static/layui/css/layui.css" rel="stylesheet" 
+	type="text/css" />
+  <script type="text/javascript" src="/static/layui/layui.js"></script>
+  <style>
+      .layui-form input{
+          height: 28px;padding-left: 5px;border: 1px solid #a3a3a3;font-size: 12px;
+      }
+      .layui-form-label{
+          padding: 3px 15px;
+      }
+  </style>
+</head>
+<body>  
+<div style="margin-bottom: 5px;">
+    <div style="height: 30px; line-height: 30px;">
+		<span class="layui-breadcrumb">
+		    <a>AG订单</a> <a><cite>交易统计</cite></a>
+		</span>
+	</div>
+	<blockquote class="layui-elem-quote">
+	    <div> 帮助：最新的日期是昨天</div>
+	     <div>为了前端的K线显示效果，请自行修改！！</div>
+	</blockquote>
+    <div class="layui-form" style="text-align: right;">
+            <div class="layui-inline">
+              <label class="layui-form-label">日期选择</label>
+              <div class="layui-input-inline">
+                <input type="text" class="layui-input" style="width:300px;" id="test10" name="date" placeholder="挂单时间：开始日期和结束日期">
+              </div>
+            </div>
+            <div class="layui-inline">
+              <button type="submit"  class="layui-btn layui-btn-sm" lay-submit="" lay-filter="search-btn">搜索</button>
+            </div>
+          </div>
+    </div>          
+
+<table class="layui-table" lay-data="{defaultToolbar:['exports'],toolbar: true ,page:true,size:'sm', id:'demo' ,method:'post',limit:15,url:document.URL}" lay-filter="demo">
+  <thead>
+    <tr>
+      <th lay-data="{type:'checkbox', fixed: 'left'}"></th>
+      <th lay-data="{field:'date_day', width:120,align:'center'}">日期</th>
+      <th lay-data="{field:'sum_trans_amount', width:120,align:'center',edit:true}">总成交金额</th>
+      <th lay-data="{field:'sum_trans_count', width:120,align:'center',edit:true}">成交订单数量</th>
+      <th lay-data="{field:'sum_buy_count', width:120,align:'center',edit:true}">买入挂单订单数量</th>
+      <th lay-data="{field:'sum_sell_count', width:120,align:'center',edit:true}">卖出挂单订单数量</th>
+      <th lay-data="{field:'sum_buy_amount', width:120,align:'center',edit:true}">买入挂单成交额</th>
+      <th lay-data="{field:'sum_sell_amount', width:120,align:'center',edit:true}">卖出挂单成交额</th>
+      <th lay-data="{field:'min_num', width:120,align:'center',edit:true}">最小成交数量</th>
+      <th lay-data="{field:'max_num', width:120,align:'center',edit:true}">最大成交数量</th>
+      <th lay-data="{field:'min_price', width:120,align:'center',edit:true}">最小成交单价</th>
+      <th lay-data="{field:'max_price', width:120,align:'center',edit:true}">最大成交单价</th>
+      <th lay-data="{field:'agv_price', width:120,align:'center',edit:true}">平均成交单价</th>
+      <th lay-data="{field:'begin_price', width:120,align:'center',edit:true}">开盘单价</th>
+      <th lay-data="{field:'end_price', width:120,align:'center',edit:true}">收盘单价</th>
+      <th lay-data="{fixed: 'right', width:120, align:'center', toolbar: '#barDemo'}">操作</th>
+    </tr>
+  </thead>
+</table>
+ <script type="text/html" id="barDemo">
+    <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="retj">重新统计</a>
+</script>
+
+
+<script>
+layui.use(['table','jquery','form','element','laydate','layer'], function(){
+  var table = layui.table;
+  var form=layui.form;
+  var laydate=layui.laydate;
+  var layer=layui.layer;
+  var $=layui.jquery;
+   //日期时间范围
+  laydate.render({ 
+    elem: '#test10'
+    ,type: 'date'
+    ,range: '~'
+  });
+  form.on('submit(search-btn)', function(data){
+     table.reload('demo', {
+        where: data.field
+     });
+    return false;
+  });
+  var eve={
+      retj:function(d){
+          layer.confirm('该操作会重新统计当日，确定？',function(){
+              $.post('{:url('retj')}',{id:d.id},function(json){
+                  layer.msg(json.msg,{time:1500},function(){
+                      if(json.code){
+                          location.reload();
+                      }
+                  });
+              });
+          });
+      }
+      
+  };
+  table.on('tool(demo)', function(obj){
+    if(eve[obj.event]){
+        eve[obj.event].call(obj,obj.data);
+    }
+  });
+   table.on('edit(demo)', function(obj){
+        $.post('{:url('editfield')}',{id:obj.data.id,field:obj.field,value:obj.value},function(json){
+          layer.msg(json.msg,{time:1500},function(){
+              if(json.code){
+                  location.reload();
+              }
+          });
+       });
+    });
+  
+});
+</script>
+
+</body>
+</html>

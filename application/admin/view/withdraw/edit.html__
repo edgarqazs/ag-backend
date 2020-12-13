@@ -1,0 +1,137 @@
+<form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('User_id')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-user_id" data-rule="required" data-source="/admin/user/index" data-field="username" class="form-control selectpage" name="row[user_id]" type="text" value="{$row.user_id|htmlentities}" disabled="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Num')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-num" data-rule="required" class="form-control" name="row[num]" type="number" value="{$row.num|htmlentities}" disabled="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Address')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-address" data-rule="required" class="form-control" name="row[address]" type="text" value="{$row.address|htmlentities}" disabled="">
+        </div>
+        {if condition="$row['in_blacklist'] eq 1"}
+         <div>该地址已列入黑名单,请谨慎操作!</div>
+         {/if}
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Withdraw_rate')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-withdraw_rate" data-rule="required" class="form-control" name="row[withdraw_rate]" type="number" value="{$row.withdraw_rate|htmlentities}" disabled="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Arrive_num')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-arrive_num" data-rule="required" class="form-control" name="row[arrive_num]" type="number" value="{$row.arrive_num|htmlentities}" disabled="">
+        </div>
+    </div>
+
+    <div>来自用户表:</div>
+    <table class="table">
+      <thead>
+      <tr>
+        <th>USDT</th>
+        <th>冻结USDT</th>
+        <th>CNY</th>
+        <th>冻结CNY</th>
+        <th>AG</th>
+        <th>冻结AG</th>
+        <th>锁仓AG</th>
+        <th>流通AG</th>
+        <th>SC</th>
+        <th>QC</th>
+        <th>AG通证兑换卡</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      <td>{$row.usdt}                       </td>
+      <td>{$row.freeze_usdt}             </td>
+      <td>{$row.cny}                         </td> 
+      <td>{$row.freeze_cny}               </td>
+      <td>{$row.ag}                           </td>
+      <td>{$row.freeze_ag}                 </td>
+      <td>{$row.lock_ag}                   </td>
+      <td>{$row.flow_ag}                   </td>
+      <td>{$row.sc}                           </td>
+      <td>{$row.qc}                           </td>
+      <td>{$row.ag_card}                           </td>
+      </tr>
+      </tbody>
+    </table>
+    <div>统计自资金变动记录表:</div>
+    <table class="table">
+      <thead>
+      <tr>
+        <th>USDT</th>
+        <th>冻结USDT</th>
+        <th>CNY</th>
+        <th>AG</th>
+        <th>冻结AG</th>
+        <th>锁仓AG</th>
+        <th>流通AG</th>
+        <th>SC</th>
+        <th>QC</th>
+        <th>AG通证兑换卡</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      <td>{$row.money_record_usdt}           </td>
+      <td>{$row.money_record_freeze_usdt}</td>
+      <td>{$row.money_record_cny}             </td>
+      <td>{$row.money_record_ag}               </td>
+      <td>{$row.money_record_freeze_ag}    </td>
+      <td>{$row.money_record_lock_ag}      </td>
+      <td>{$row.money_record_flow_ag}      </td>
+      <td>{$row.money_record_sc}               </td>
+      <td>{$row.money_record_qc}               </td>
+      <td>{$row.money_record_ag_card}  </td>
+      </tr>
+      </tbody>
+    </table>
+    <table class="table">
+      <thead>
+      <tr>
+        <th>未拼中次数</th>
+        <th>未拼中退还次数</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>{$row.pintuan_not_win}</td>
+        <td>{$row.pintuan_not_win_is_not_fan}    </td>
+      </tr>
+      </tbody>
+    </table>
+    {if condition="$row['status'] eq '未处理' "}
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Status')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            
+            <div class="radio">
+            {foreach name="statusList" item="vo"}
+            <label for="row[status]-{$key}"><input id="row[status]-{$key}" name="row[status]" type="radio" value="{$key}" {in name="key" value="$row.status"}checked{/in} /> {$vo}</label> 
+            {/foreach}
+            </div>
+
+        </div>
+    </div>
+    {/if}
+
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>

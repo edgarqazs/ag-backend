@@ -1,0 +1,307 @@
+<form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">AG认购开关</label>
+        <div class="col-xs-12 col-sm-8">
+            <label><input type="radio" name="row[switch_ag_buy]" value="1" {if condition="$row['switch_ag_buy'] eq 1"}checked{/if} />开启 </label>
+            <label><input type="radio" name="row[switch_ag_buy]" value="0" {if condition="$row['switch_ag_buy'] eq 0"}checked{/if} />关闭 </label>
+        </div> 
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">AG划转开关</label>
+        <div class="col-xs-12 col-sm-8">
+            <label><input type="radio" name="row[switch_flow_ag]" value="1" {if condition="$row['switch_flow_ag'] eq 1"}checked{/if} />开启 </label>
+            <label><input type="radio" name="row[switch_flow_ag]" value="0" {if condition="$row['switch_flow_ag'] eq 0"}checked{/if} />关闭 </label>
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">AG交易开关</label>
+        <div class="col-xs-12 col-sm-8">
+            <label><input type="radio" name="row[switch_ag_trade]" value="1" {if condition="$row['switch_ag_trade'] eq 1"}checked{/if} />开启 </label>
+            <label><input type="radio" name="row[switch_ag_trade]" value="0" {if condition="$row['switch_ag_trade'] eq 0"}checked{/if} />关闭 </label>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">AG历史订单开关</label>
+        <div class="col-xs-12 col-sm-8">
+            <label><input type="radio" name="row[switch_ag_order]" value="1" {if condition="$row['switch_ag_order'] eq 1"}checked{/if} />开启 </label>
+            <label><input type="radio" name="row[switch_ag_order]" value="0" {if condition="$row['switch_ag_order'] eq 0"}checked{/if} />关闭 </label>
+        </div>
+    </div>
+    
+        <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">AG点对点转账手续费率(百分号前数字,如2%则填2即可):</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-flow_ag_charge_percent" data-rule="required" class="form-control" name="row[flow_ag_charge_percent]" type="text" value="{$row.flow_ag_charge_percent|htmlentities}">
+        </div>
+    </div>
+
+            <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">AG卖出限制数量:</label>
+               <div class="col-xs-12 col-sm-8">
+            <input id="c-flow_ag_sell_limit" data-rule="required" class="form-control" name="row[ag_sell_limit]" type="text" value="{$row.ag_sell_limit|htmlentities}">
+                </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Zhong_rate')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-zhong_rate" data-rule="required" class="form-control" step="0.01" name="row[zhong_rate]" type="number" value="{$row.zhong_rate|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Wei_rate')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-wei_rate" data-rule="required" class="form-control" step="0.01" name="row[wei_rate]" type="number" value="{$row.wei_rate|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Cny_ag_rate')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-cny_ag_rate" data-rule="required" class="form-control" step="0.01" name="row[cny_ag_rate]" type="number" value="{$row.cny_ag_rate|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Usdt_cny_rate')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-usdt_cny_rate" data-rule="required" class="form-control" step="0.01" name="row[usdt_cny_rate]" type="number" value="{$row.usdt_cny_rate|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">usdt_ag兑换比例:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-usdt_ag_rate" data-rule="required" class="form-control" step="0.01" name="row[usdt_ag_rate]" type="number" value="{$row.usdt_ag_rate|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Withdraw_rate')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-withdraw_rate" data-rule="required" class="form-control" name="row[withdraw_rate]" type="number" value="{$row.withdraw_rate|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Fail_cny')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-fail_cny" data-rule="required" class="form-control" step="0.01" name="row[fail_cny]" type="number" value="{$row.fail_cny|htmlentities}">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Ag_card_rate')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-ag_card_rate" data-rule="required" class="form-control" step="0.01" name="row[ag_card_rate]" type="number" value="{$row.ag_card_rate|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Node_cny')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-node_cny" data-rule="required" class="form-control" step="0.01" name="row[node_cny]" type="number" value="{$row.node_cny|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Node_num')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-node_num" data-rule="required" class="form-control" name="row[node_num]" type="number" value="{$row.node_num|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Node_every_get')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-node_every_get" data-rule="required" class="form-control" step="0.01" name="row[node_every_get]" type="number" value="{$row.node_every_get|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Node_company')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-node_company" data-rule="required" class="form-control" name="row[node_company]" type="number" value="{$row.node_company|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Node_every_pay')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-node_every_pay" data-rule="required" class="form-control" name="row[node_every_pay]" type="number" value="{$row.node_every_pay|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Node_desc')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea id="c-node_desc" data-rule="required" class="form-control " rows="5" name="row[node_desc]" cols="50">{$row.node_desc|htmlentities}</textarea>
+        </div>
+    </div>
+
+    
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('可用ag转流通ag比例')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-useag_flowag_rate" data-rule="required" class="form-control" name="row[useag_flowag_rate]" type="number" value="{$row.useag_flowag_rate|htmlentities}">
+        </div>
+    </div>
+ 	<div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('流通ag转可用ag比例')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-flowag_useag_rate" data-rule="required" class="form-control" name="row[flowag_useag_rate]" type="number" value="{$row.flowag_useag_rate|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('usdt充值比例')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-usdt_recharge_rate" data-rule="required" class="form-control" name="row[usdt_recharge_rate]" type="number" value="{$row.usdt_recharge_rate|htmlentities}">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('直推奖励')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-level_one" data-rule="required" class="form-control" name="row[level_one]" type="number" value="{$row.level_one|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('间推奖励')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-level_two" data-rule="required" class="form-control" name="row[level_two]" type="number" value="{$row.level_two|htmlentities}">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('间推奖励')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-level_two" data-rule="required" class="form-control" name="row[level_two]" type="number" value="{$row.level_two|htmlentities}">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('ag交易参考值')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-ag_suggest" data-rule="required" class="form-control" name="row[ag_suggest]" type="text" value="{$row.ag_suggest|htmlentities}">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">拼团倒计时（秒）:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-pintuan_time" data-rule="required" class="form-control" name="row[pintuan_time]" type="text" value="{$row.pintuan_time|htmlentities}">
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">拼购1次区每日次数:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-pintuan_one_num" data-rule="required" class="form-control" name="row[pintuan_one_num]" type="text" value="{$row.pintuan_one_num|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">拼购5次区每日次数:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-pintuan_five_num" data-rule="required" class="form-control" name="row[pintuan_five_num]" type="text" value="{$row.pintuan_five_num|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">拼购10次区每日次数:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-pintuan_ten_num" data-rule="required" class="form-control" name="row[pintuan_ten_num]" type="text" value="{$row.pintuan_ten_num|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">拼购20次区每日次数:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-pintuan_twenty_num" data-rule="required" class="form-control" name="row[pintuan_twenty_num]" type="text" value="{$row.pintuan_twenty_num|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">拼购30次区每日次数:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-pintuan_thirty_num" data-rule="required" class="form-control" name="row[pintuan_thirty_num]" type="text" value="{$row.pintuan_thirty_num|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">拼购50次区每日次数:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-pintuan_fifty_num" data-rule="required" class="form-control" name="row[pintuan_fifty_num]" type="text" value="{$row.pintuan_fifty_num|htmlentities}">
+        </div>
+    </div>
+
+    
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">是否开启机器人:</label>
+        <div class="col-xs-12 col-sm-8">
+            <select name="row[is_robot]" class="form-control">
+                <option value="1" {if condition="$row['is_robot'] eq 1"}selected{/if}>是</option>
+                <option value="2" {if condition="$row['is_robot'] eq 2"}selected{/if}>否</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">机器人开始时间（n秒后）:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-start_robot_time" data-rule="required" class="form-control" name="row[start_robot_time]" type="text" value="{$row.start_robot_time|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">机器人进场时间间隔（n秒）:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-robot_in_time" data-rule="required" class="form-control" name="row[robot_in_time]" type="text" value="{$row.robot_in_time|htmlentities}">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">拼团功能开放时间:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-pintuan_open_time" data-rule="required" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[pintuan_open_time]" type="text" value="{:$row.pintuan_open_time?datetime($row.pintuan_open_time):''}">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">拼团功能关闭时间:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-pintuan_close_time" data-rule="required" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[pintuan_close_time]" type="text" value="{:$row.pintuan_close_time?datetime($row.pintuan_close_time):''}">
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">钱包下载地址:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-bag_url" data-rule="required" class="form-control" name="row[bag_url]" type="text" value="{$row.bag_url|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">app下载地址:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-app_url" data-rule="required" class="form-control" name="row[app_url]" type="text" value="{$row.app_url|htmlentities}">
+        </div>
+    </div>    
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">app版本号:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-version" data-rule="required" class="form-control" name="row[version]" type="text" value="{$row.version|htmlentities}">
+        </div>
+    </div>    
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('用户协议')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea id="c-agreement" data-rule="required" class="form-control editor" rows="5" name="row[agreement]" cols="50">{$row.agreement|htmlentities}</textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">安卓下载地址:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-android_download_url" data-rule="required" class="form-control" name="row[android_download_url]" type="text" value="{$row.android_download_url|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">苹果下载地址:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-iphone_download_url" data-rule="required" class="form-control" name="row[iphone_download_url]" type="text" value="{$row.iphone_download_url|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>

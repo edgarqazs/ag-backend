@@ -1,0 +1,278 @@
+<form id="add-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Username')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-username" data-rule="required" class="form-control" name="row[username]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Nickname')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-nickname" data-rule="required" class="form-control" name="row[nickname]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Pwd')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-pwd" data-rule="required" class="form-control" name="row[pwd]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Word')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-word" data-rule="required" class="form-control" name="row[word]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Cny')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-cny" data-rule="required" class="form-control" name="row[cny]" type="number">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Freeze_cny')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-freeze_cny" data-rule="required" class="form-control" name="row[freeze_cny]" type="number">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Ag')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-ag" data-rule="required" class="form-control" name="row[ag]" type="number">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Freeze_ag')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-freeze_ag" data-rule="required" class="form-control" name="row[freeze_ag]" type="number">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Lock_ag')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-lock_ag" data-rule="required" class="form-control" name="row[lock_ag]" type="number">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Flow_ag')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-flow_ag" data-rule="required" class="form-control" name="row[flow_ag]" type="number">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Sc')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-sc" data-rule="required" class="form-control" name="row[sc]" type="number">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Qc')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-qc" data-rule="required" class="form-control" name="row[qc]" type="number">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Usdt')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-usdt" data-rule="required" class="form-control" name="row[usdt]" type="number">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Freeze_usdt')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-freeze_usdt" data-rule="required" class="form-control" name="row[freeze_usdt]" type="number">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Ag_card')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-ag_card" data-rule="required" class="form-control" name="row[ag_card]" type="number">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Private_key')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-private_key" data-rule="required" class="form-control" name="row[private_key]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Invite_code')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-invite_code" data-rule="required" class="form-control" name="row[invite_code]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Qrcode_image')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class="input-group">
+                <input id="c-qrcode_image" data-rule="required" class="form-control" size="50" name="row[qrcode_image]" type="text">
+                <div class="input-group-addon no-border no-padding">
+                    <span><button type="button" id="plupload-qrcode_image" class="btn btn-danger plupload" data-input-id="c-qrcode_image" data-mimetype="image/gif,image/jpeg,image/png,image/jpg,image/bmp" data-multiple="false" data-preview-id="p-qrcode_image"><i class="fa fa-upload"></i> {:__('Upload')}</button></span>
+                    <span><button type="button" id="fachoose-qrcode_image" class="btn btn-primary fachoose" data-input-id="c-qrcode_image" data-mimetype="image/*" data-multiple="false"><i class="fa fa-list"></i> {:__('Choose')}</button></span>
+                </div>
+                <span class="msg-box n-right" for="c-qrcode_image"></span>
+            </div>
+            <ul class="row list-inline plupload-preview" id="p-qrcode_image"></ul>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Head_image')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class="input-group">
+                <input id="c-head_image" data-rule="required" class="form-control" size="50" name="row[head_image]" type="text" value="/assets/img/touxiang.png">
+                <div class="input-group-addon no-border no-padding">
+                    <span><button type="button" id="plupload-head_image" class="btn btn-danger plupload" data-input-id="c-head_image" data-mimetype="image/gif,image/jpeg,image/png,image/jpg,image/bmp" data-multiple="false" data-preview-id="p-head_image"><i class="fa fa-upload"></i> {:__('Upload')}</button></span>
+                    <span><button type="button" id="fachoose-head_image" class="btn btn-primary fachoose" data-input-id="c-head_image" data-mimetype="image/*" data-multiple="false"><i class="fa fa-list"></i> {:__('Choose')}</button></span>
+                </div>
+                <span class="msg-box n-right" for="c-head_image"></span>
+            </div>
+            <ul class="row list-inline plupload-preview" id="p-head_image"></ul>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Pintuan_num')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-pintuan_num" data-rule="required" class="form-control" name="row[pintuan_num]" type="number">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Zhong_num')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-zhong_num" data-rule="required" class="form-control" name="row[zhong_num]" type="number">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Other_num')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-other_num" data-rule="required" class="form-control" name="row[other_num]" type="number">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Father_id')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-father_id" data-rule="required" data-source="father/index" class="form-control selectpage" name="row[father_id]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Grandfather_id')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-grandfather_id" data-rule="required" data-source="grandfather/index" class="form-control selectpage" name="row[grandfather_id]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Family_id')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-family_id" data-rule="required" data-source="family/index" class="form-control selectpage" name="row[family_id]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Contact_id')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-contact_id" data-rule="required" data-source="contact/index" class="form-control selectpage" name="row[contact_id]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Level')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-level" data-rule="required" class="form-control" name="row[level]" type="number" value="-1">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Status')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            
+            <div class="radio">
+            {foreach name="statusList" item="vo"}
+            <label for="row[status]-{$key}"><input id="row[status]-{$key}" name="row[status]" type="radio" value="{$key}" {in name="key" value="正常"}checked{/in} /> {$vo}</label> 
+            {/foreach}
+            </div>
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Ctime')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-ctime" data-rule="required" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[ctime]" type="text" value="{:date('Y-m-d H:i:s')}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Team_num')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-team_num" data-rule="required" class="form-control" name="row[team_num]" type="number">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('V1_num')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-v1_num" data-rule="required" class="form-control" name="row[v1_num]" type="number">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('V2_num')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-v2_num" data-rule="required" class="form-control" name="row[v2_num]" type="number">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('V3_num')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-v3_num" data-rule="required" class="form-control" name="row[v3_num]" type="number">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Is_bank')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-is_bank" data-rule="required" class="form-control" name="row[is_bank]" type="number" value="2">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Is_ali')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-is_ali" data-rule="required" class="form-control" name="row[is_ali]" type="number" value="2">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Is_wechat')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-is_wechat" data-rule="required" class="form-control" name="row[is_wechat]" type="number" value="2">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Pintuan_money')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-pintuan_money" data-rule="required" class="form-control" name="row[pintuan_money]" type="number">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Share_money')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-share_money" data-rule="required" class="form-control" name="row[share_money]" type="number">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Team_money')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-team_money" data-rule="required" class="form-control" name="row[team_money]" type="number">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Node_money')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-node_money" data-rule="required" class="form-control" name="row[node_money]" type="number">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Company_money')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-company_money" data-rule="required" class="form-control" name="row[company_money]" type="number">
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>

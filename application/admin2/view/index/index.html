@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>后台查询系统</title>
+  <link href="/static/layui/css/layui.css" rel="stylesheet" 
+	type="text/css" />
+  <script type="text/javascript" src="/static/layui/layui.js"></script>
+  <style type="text/css">
+  .layui-layout-admin .layui-footer {
+    position: fixed;
+    left: 149px;
+    right: 0;
+    bottom: 0;
+    height: 44px;
+    line-height: 44px;
+    padding: 0 15px;
+    background-color: #eee;
+  }
+.layui-nav-item {
+	text-align: center;
+}
+
+dd {
+	cursor: pointer;
+	text-align: right;
+	padding-right: 20px;
+}
+iframe {
+    border: none;
+    position: absolute;
+    right: -3px;
+    height: 800px;
+    top: 5px;
+    overflow-y: scroll;
+    bottom: 5px;
+    background-color: white;
+    left: 5px;
+    width: 99.5%;
+}
+.layui-side-scroll {
+    position: relative;
+    width: 150px;
+    height: 100%;
+    overflow-x: hidden;
+}
+.layui-layout-admin .layui-side {
+    top: 0px;
+    width: 150px; 
+    overflow-x: hidden;
+}
+.layui-nav-tree {
+    width: 148px;
+    padding: 0;
+}
+.layui-body {
+    position: absolute;
+    left: 150px;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 998;
+    width: auto;
+    overflow-y: auto;
+    box-sizing: border-box;
+}
+.layui-nav-tree .layui-nav-item a {
+    font-size: 12px;
+}
+.layui-header {
+    z-index: 1000;
+    display: none;
+}
+.layui-layout-admin .layui-body {
+    position: fixed;
+    top: 0px;
+    bottom: 44px; 
+}
+.layui-nav-item dd a{
+    margin-right: -21px;
+}
+</style>
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+  <div class="layui-header">
+    <div class="layui-logo">后台查询系统</div>
+    <!-- 头部区域（可配合layui已有的水平导航） -->
+    <ul class="layui-nav layui-layout-left">
+      <!--<li class="layui-nav-item"><a href="">控制台</a></li>-->
+    </ul>
+    <ul class="layui-nav layui-layout-right">
+      <li class="layui-nav-item">
+        <a href="javascript:;">
+          <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
+          {:session('admin2_info.username')}
+        </a>
+        <!--<dl class="layui-nav-child">
+          <dd><a href="">基本资料</a></dd>
+          <dd><a href="">安全设置</a></dd>
+        </dl>
+        -->
+      </li>
+      <li class="layui-nav-item"><a href="javascript:(confirm('确定要退出?') && (location.href='{:url('out')}'))">退出</a></li>
+    </ul>
+  </div>
+  
+  <div class="layui-side layui-bg-black">
+    <div class="layui-side-scroll">
+      <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+      <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+        	{foreach name="menus" item="item"}
+            	{if condition="isset($item['act'])"}
+					<li class="layui-nav-item"><a _href="{:url($item['act'])}">{$item['name']}</a></li>
+				{else /}
+					<li class="layui-nav-item "><a href="javascript:;">{$item.name}</a>
+						<dl class="layui-nav-child">
+							{foreach name="item.childs" item="item2"}
+							<dd>
+								<a _href="{:url($item2['act'])}">{$item2['name']}</a>
+							</dd>
+							{/foreach}
+					    </dl>
+					</li> 
+				{/if} 
+			{/foreach}
+			<li class="layui-nav-item"><a href="javascript:(confirm('确定要退出?') && (location.href='{:url('out')}'))">退出登录</a></li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="layui-body" style="overflow: hidden;">
+			<div
+				style="position: relative; overflow: hidden; width: 100%; height: 800px;">
+				<iframe name="tv"></iframe>
+			</div>
+		</div>
+  
+  <div class="layui-footer">
+    <!-- 底部固定区域 -->
+   码道程工@2020
+  </div>
+</div>
+<script>
+//JavaScript代码区域
+        layui.use([ 'element', 'jquery' ], function() {
+			var element = layui.elesment;
+			var $ = layui.jquery;
+			tvSrc=function (href,sync_css) {
+				if (href) {
+					sessionStorage.setItem('last-src', href);
+					$("iframe[name=tv]").attr('src', href);
+					if(sync_css){
+						$(".layui-nav-tree").find("[_href]").each(function(){
+							if(href==$(this).attr("_href")){
+								var $li=$(this).parents(".layui-nav-item");
+								$(".layui-this").removeClass("layui-this");
+								$li.addClass("layui-nav-itemed");
+								sessionStorage.setItem('last-li', $li.index());
+								if($(this).parent()[0].tagName=='DD'){
+									var $dd=$(this).parent();
+									$dd.addClass("layui-this");
+									sessionStorage.setItem('last-dd', $dd.index());
+								}else{
+									$li.addClass("layui-this");
+								}
+							}
+						});
+					}
+				} else {
+					var last_src = sessionStorage.getItem('last-src');
+					if (last_src) {
+						return last_src;
+					} else {
+						return $(".layui-nav-tree a[_href]:eq(0)")
+								.attr('_href');
+					} 
+				}  
+			};
+			$(".layui-nav-tree").on("click", "li", function() {
+				$(this).siblings().removeClass("layui-nav-itemed");
+				sessionStorage.setItem('last-li', $(this).index());
+				var _href = $(this).find("a:eq(0)").attr('_href');
+				_href && tvSrc(_href);
+			});
+			$(".layui-nav-tree").on("click", "dd", function() {
+				sessionStorage.setItem('last-dd', $(this).index());
+				var _href = $(this).find("a:eq(0)").attr("_href");
+				_href && tvSrc(_href);
+			});
+			var li_idx = sessionStorage.getItem('last-li') || 0;
+			var dd_idx = sessionStorage.getItem('last-dd') || 0;
+			$(".layui-nav-tree li:eq(" + li_idx + ")").addClass(
+					"layui-nav-itemed").find("dd:eq(" + dd_idx + ")").addClass(
+					'layui-this');
+			tvSrc(tvSrc());
+		});
+</script>
+</body>
+</html>

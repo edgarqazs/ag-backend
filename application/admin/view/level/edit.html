@@ -1,0 +1,47 @@
+<form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Share_num')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-share_num" data-rule="required" class="form-control" name="row[share_num]" type="number" value="{$row.share_num|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('V1_num')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-v1_num" data-rule="required" class="form-control" name="row[v1_num]" type="number" value="{$row.v1_num|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('V2_num')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-v2_num" data-rule="required" class="form-control" name="row[v2_num]" type="number" value="{$row.v2_num|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('V3_num')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-v3_num" data-rule="required" class="form-control" name="row[v3_num]" type="number" value="{$row.v3_num|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Team_num')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-team_num" data-rule="required" class="form-control" name="row[team_num]" type="number" value="{$row.team_num|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Money')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-money" data-rule="required" class="form-control" step="0.01" name="row[money]" type="number" value="{$row.money|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>
